@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 @staticmethod
 def bigger_or_equal(rect_1, rect_2):
     """Return the bigger rectangle based on area."""
