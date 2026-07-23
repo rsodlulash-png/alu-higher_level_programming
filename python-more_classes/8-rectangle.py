@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 @staticmethod
 def bigger_or_equal(rect_1, rect_2):
-    """Return the bigger rectangle based on area."""
+    """Return the biggest rectangle based on area."""
 
     if not isinstance(rect_1, Rectangle):
         raise TypeError("rect_1 must be an instance of Rectangle")
