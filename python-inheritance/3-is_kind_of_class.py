@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that defines a function to check inheritance-inclusive class match."""
+"""Defines a function checking inheritance-inclusive class matching."""
 
 
 def is_kind_of_class(obj, a_class):
