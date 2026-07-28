@@ -1,0 +1,44 @@
+The ``1-my_list`` module
+=========================
+
+Using ``MyList``
+------------------
+
+Import the class:
+
+    >>> MyList = __import__('1-my_list').MyList
+
+Create an instance and append some ints:
+
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+Print sorted, and confirm original order is unaffected:
+
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+Works with an empty list too:
+
+    >>> empty = MyList()
+    >>> empty.print_sorted()
+    []
+
+Works with negative numbers and duplicates:
+
+    >>> nums = MyList()
+    >>> nums.append(-1)
+    >>> nums.append(0)
+    >>> nums.append(-5)
+    >>> nums.append(3)
+    >>> nums.append(-1)
+    >>> nums.print_sorted()
+    [-5, -1, -1, 0, 3]
