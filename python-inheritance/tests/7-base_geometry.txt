@@ -1,0 +1,53 @@
+The ``7-base_geometry`` module
+================================
+
+Using ``BaseGeometry.integer_validator``
+------------------------------------------
+
+Import the class:
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
+
+Valid positive integers raise nothing and return None:
+
+    >>> bg.integer_validator("my_int", 12) is None
+    True
+    >>> bg.integer_validator("width", 89) is None
+    True
+    >>> bg.integer_validator("height", 1) is None
+    True
+
+Non-integer values raise a TypeError:
+
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    TypeError: name must be an integer
+
+    >>> bg.integer_validator("size", 3.14)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    >>> bg.integer_validator("items", [1, 2, 3])
+    Traceback (most recent call last):
+    TypeError: items must be an integer
+
+    >>> bg.integer_validator("flag", True)
+    Traceback (most recent call last):
+    TypeError: flag must be an integer
+
+Zero or negative integers raise a ValueError:
+
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ValueError: distance must be greater than 0
+
+``area()`` is still unimplemented, inherited unchanged from before:
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
