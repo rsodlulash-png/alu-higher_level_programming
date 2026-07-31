@@ -1,0 +1,111 @@
+The ``7-base_geometry`` module
+================================
+
+Using ``BaseGeometry``
+------------------------
+
+Import the class and create an instance:
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
+    >>> bg  # doctest: +ELLIPSIS
+    <7-base_geometry.BaseGeometry object at 0x...>
+
+``area()`` is unimplemented and always raises:
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+``integer_validator`` - valid positive integers
+--------------------------------------------------
+
+Valid positive integers raise nothing and return None:
+
+    >>> bg.integer_validator("my_int", 12) is None
+    True
+    >>> bg.integer_validator("width", 89) is None
+    True
+    >>> bg.integer_validator("age", 1) is None
+    True
+
+``integer_validator`` - missing arguments
+--------------------------------------------
+
+Calling with no arguments at all:
+
+    >>> bg.integer_validator()  # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError: ...integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Calling with only the name, missing value:
+
+    >>> bg.integer_validator("age")  # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError: ...integer_validator() missing 1 required positional argument: 'value'
+
+``integer_validator`` - value <= 0
+--------------------------------------
+
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+    >>> bg.integer_validator("age", -4)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+``integer_validator`` - non-integer types
+----------------------------------------------
+
+A string:
+
+    >>> bg.integer_validator("age", "4")
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A float:
+
+    >>> bg.integer_validator("age", 13.5)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A tuple:
+
+    >>> bg.integer_validator("age", (4,))
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A list:
+
+    >>> bg.integer_validator("age", [3])
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A set:
+
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A dictionary:
+
+    >>> bg.integer_validator("age", {"a": 3})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+``None``:
+
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A boolean - bool is a subclass of int, but must still be rejected:
+
+    >>> bg.integer_validator("age", True)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", False)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
