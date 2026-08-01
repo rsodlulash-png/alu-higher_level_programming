@@ -1,42 +1,49 @@
 The ``0-add_integer`` module
-==============================
-
-Using ``add_integer``
----------------------
-
-Importing the function:
+=============================
+ 
+Import the function:
+ 
     >>> add_integer = __import__('0-add_integer').add_integer
-
-Normal integers:
+ 
+Add two positive integers:
+ 
     >>> add_integer(1, 2)
     3
-
-Using default b value:
-    >>> add_integer(10)
-    108
-
-Floats cast to integers:
-    >>> add_integer(1.4, 2)
-    3
-    >>> add_integer(1, 2.9)
-    3
-
-String numbers that look like ints should fail type check:
-    >>> add_integer(1, "2")
+ 
+Add a positive and a negative integer:
+ 
+    >>> add_integer(100, -2)
+    98
+ 
+Use the default value for b:
+ 
+    >>> add_integer(2)
+    100
+ 
+Cast a float for a before adding:
+ 
+    >>> add_integer(100.3, -2)
+    98
+ 
+Cast a float for b before adding:
+ 
+    >>> add_integer(2, 3.5)
+    5
+ 
+Raise a TypeError when b is not an int or float:
+ 
+    >>> add_integer(4, "School")
     Traceback (most recent call last):
     TypeError: b must be an integer
-
-Missing argument (a missing):
-    >>> add_integer()
-    Traceback (most recent call last):
-    TypeError: add_integer() missing 1 required positional argument: 'a'
-
-Handling Float Infinity:
-    >>> add_integer(float('inf'), 2)
+ 
+Raise a TypeError when a is not an int or float:
+ 
+    >>> add_integer(None)
     Traceback (most recent call last):
     TypeError: a must be an integer
-
-Handling Float NaN:
-    >>> add_integer(1, float('nan'))
+ 
+Raise a TypeError when a is a string:
+ 
+    >>> add_integer("1", 2)
     Traceback (most recent call last):
-    TypeError: b must be an intege
+    TypeError: a must be an integer
