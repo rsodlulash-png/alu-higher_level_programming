@@ -1,0 +1,1 @@
+JavaScript is a full-fledged programming language — it contains all the classic programming features you may have seen in other programming languages (or at least heard about), such as variables, loops, and functions.
